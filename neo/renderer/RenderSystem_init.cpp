@@ -168,7 +168,7 @@ idCVar r_testGammaBias( "r_testGammaBias", "0", CVAR_RENDERER | CVAR_FLOAT, "if 
 idCVar r_lightScale( "r_lightScale", "3", CVAR_ARCHIVE | CVAR_RENDERER | CVAR_FLOAT, "all light intensities are multiplied by this", 0, 100 );
 idCVar r_flareSize( "r_flareSize", "1", CVAR_RENDERER | CVAR_FLOAT, "scale the flare deforms from the material def" );
 
-idCVar r_useScissor( "r_useScissor", "1", CVAR_RENDERER | CVAR_BOOL, "scissor clip as portals and lights are processed" );
+idCVar r_useScissor( "r_useScissor", "1", CVAR_RENDERER | CVAR_BOOL | CVAR_NOCHEAT, "scissor clip as portals and lights are processed" );
 idCVar r_useLightDepthBounds( "r_useLightDepthBounds", "1", CVAR_RENDERER | CVAR_BOOL, "use depth bounds test on lights to reduce both shadow and interaction fill" );
 idCVar r_useShadowDepthBounds( "r_useShadowDepthBounds", "1", CVAR_RENDERER | CVAR_BOOL, "use depth bounds test on individual shadow volumes to reduce shadow fill" );
 // RB begin
@@ -308,7 +308,7 @@ const char* fileExten[4] = { "tga", "png", "jpg", "exr" };
 const char* envDirection[6] = { "_px", "_nx", "_py", "_ny", "_pz", "_nz" };
 const char* skyDirection[6] = { "_forward", "_back", "_left", "_right", "_up", "_down" };
 
-DeviceManager* deviceManager;
+DeviceManager* deviceManager = NULL;
 
 
 bool R_UseTemporalAA()
@@ -448,12 +448,18 @@ void R_SetNewMode( const bool fullInit )
 			case ANTI_ALIASING_MSAA_4X:
 				parms.multiSamples = 4;
 				break;
+#elif defined( _MSC_VER )			// SRS: #pragma warning is MSVC specific
+#pragma warning( push )
+#pragma warning( disable : 4065 )	// C4065: switch statement contains 'default' but no 'case'
 #endif
 
 			default:
 				parms.multiSamples = 1;
 				break;
 		}
+#if !ID_MSAA && defined( _MSC_VER )
+#pragma warning( pop )
+#endif
 
 		if( i == 0 )
 		{
@@ -467,17 +473,6 @@ void R_SetNewMode( const bool fullInit )
 		if( fullInit )
 		{
 			// create the context as well as setting up the window
-
-			nvrhi::GraphicsAPI api = nvrhi::GraphicsAPI::D3D12;
-			if( !idStr::Icmp( r_graphicsAPI.GetString(), "vulkan" ) )
-			{
-				api = nvrhi::GraphicsAPI::VULKAN;
-			}
-			else if( !idStr::Icmp( r_graphicsAPI.GetString(), "dx12" ) )
-			{
-				api = nvrhi::GraphicsAPI::D3D12;
-			}
-			deviceManager = DeviceManager::Create( api );
 
 #if defined( VULKAN_USE_PLATFORM_SDL )
 			if( VKimp_Init( parms ) )
@@ -838,7 +833,8 @@ bool R_ReadPixelsRGB8( nvrhi::IDevice* device, CommonRenderPasses* pPasses, nvrh
 #endif
 
 	// fix alpha
-	for( int i = 0; i < ( desc.width * desc.height ); i++ )
+	// SRS - changed to uint32_t for type consistency
+	for( uint32_t i = 0; i < ( desc.width * desc.height ); i++ )
 	{
 		data[ i * 4 + 3 ] = 0xff;
 	}
@@ -952,7 +948,8 @@ bool R_ReadPixelsRGB16F( nvrhi::IDevice* device, CommonRenderPasses* pPasses, nv
 	}
 #endif
 
-	for( int i = 0; i < ( desc.width * desc.height ); i++ )
+	// SRS - changed to uint32_t for type consistency
+	for( uint32_t i = 0; i < ( desc.width * desc.height ); i++ )
 	{
 		outData[ i * 3 + 0 ] = data[ i * 4 + 0 ];
 		outData[ i * 3 + 1 ] = data[ i * 4 + 1 ];
@@ -966,7 +963,8 @@ bool R_ReadPixelsRGB16F( nvrhi::IDevice* device, CommonRenderPasses* pPasses, nv
 	const idVec3 LUMINANCE_LINEAR( 0.299f, 0.587f, 0.144f );
 	idVec3 rgb;
 
-	for( int i = 0; i < ( desc.width * desc.height ); i++ )
+	// SRS - changed to uint32_t for type consistency
+	for( uint32_t i = 0; i < ( desc.width * desc.height ); i++ )
 	{
 		rgb.x = F16toF32( outData[ i * 3 + 0 ] );
 		rgb.y = F16toF32( outData[ i * 3 + 1 ] );
@@ -990,7 +988,8 @@ bool R_ReadPixelsRGB16F( nvrhi::IDevice* device, CommonRenderPasses* pPasses, nv
 
 	if( isCorrupted )
 	{
-		for( int i = 0; i < ( desc.width * desc.height ); i++ )
+		// SRS - changed to uint32_t for type consistency
+		for( uint32_t i = 0; i < ( desc.width * desc.height ); i++ )
 		{
 			outData[ i * 3 + 0 ] = F32toF16( 0 );
 			outData[ i * 3 + 1 ] = F32toF16( 0 );
@@ -1605,10 +1604,8 @@ void R_InitMaterials()
 	// RB: create implicit material
 	tr.imgGuiMaterial = declManager->FindMaterial( "_imguiFont", true );
 
-#if IMGUI_BFGUI
 	ImGuiIO& io = ImGui::GetIO();
 	io.Fonts->TexID = ( void* )( intptr_t )tr.imgGuiMaterial;
-#endif
 }
 
 
@@ -1741,24 +1738,32 @@ void idRenderSystemLocal::Clear()
 
 	if( unitSquareTriangles != NULL )
 	{
+		Mem_Free( unitSquareTriangles->verts );
+		Mem_Free( unitSquareTriangles->indexes );
 		Mem_Free( unitSquareTriangles );
 		unitSquareTriangles = NULL;
 	}
 
 	if( zeroOneCubeTriangles != NULL )
 	{
+		Mem_Free( zeroOneCubeTriangles->verts );
+		Mem_Free( zeroOneCubeTriangles->indexes );
 		Mem_Free( zeroOneCubeTriangles );
 		zeroOneCubeTriangles = NULL;
 	}
 
 	if( zeroOneSphereTriangles != NULL )
 	{
+		Mem_Free( zeroOneSphereTriangles->verts );
+		Mem_Free( zeroOneSphereTriangles->indexes );
 		Mem_Free( zeroOneSphereTriangles );
 		zeroOneSphereTriangles = NULL;
 	}
 
 	if( testImageTriangles != NULL )
 	{
+		Mem_Free( testImageTriangles->verts );
+		Mem_Free( testImageTriangles->indexes );
 		Mem_Free( testImageTriangles );
 		testImageTriangles = NULL;
 	}
@@ -2165,8 +2170,6 @@ idRenderSystemLocal::Shutdown
 */
 void idRenderSystemLocal::Shutdown()
 {
-	extern idCVar com_smp;
-
 	common->Printf( "idRenderSystem::Shutdown()\n" );
 
 	fonts.DeleteContents();
@@ -2199,8 +2202,8 @@ void idRenderSystemLocal::Shutdown()
 	UnbindBufferObjects();
 
 	// SRS - wait for fence to hit before freeing any resources the GPU may be using, otherwise get Vulkan validation layer errors on shutdown
-	// SRS - skip this step if we are in Doom 3 mode (com_smp = -1) which has already finished and presented
-	if( com_smp.GetInteger() != -1 )
+	// SRS - skip this step if we are in a Doom Classic game
+	if( common->GetCurrentGame() == DOOM3_BFG )
 	{
 		backend.GL_BlockingSwapBuffers();
 	}
