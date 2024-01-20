@@ -4726,6 +4726,12 @@ idVec3 idEntity::GetOriginBrushOffset() const
 	return spawnArgs.GetVector( BRUSH_ORIGIN_KEY, "0 0 0" );
 }
 
+idVec3 idEntity::GetEditOrigin() const
+{
+	return GetPhysics()->GetOrigin();
+}
+
+
 /***********************************************************************
 
    Events

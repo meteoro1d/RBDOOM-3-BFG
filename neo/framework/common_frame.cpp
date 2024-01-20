@@ -90,12 +90,6 @@ be called directly in the foreground thread for comparison.
 */
 int idGameThread::Run()
 {
-	if( com_smp.GetBool() )
-	{
-		// SRS - label thread in smp mode only, otherwise CPU frame number is missing
-		OPTICK_THREAD( "idGameThread" );
-	}
-
 	commonLocal.frameTiming.startGameTime = Sys_Microseconds();
 
 	// debugging tool to test frame dropping behavior
@@ -393,6 +387,9 @@ void idCommonLocal::Draw()
 
 	{
 		SCOPED_PROFILE_EVENT( "Post-Draw" );
+
+		// draw Imgui before the console
+		ImGuiHook::Render();
 
 		// draw the wipe material on top of this if it hasn't completed yet
 		DrawWipeModel();
