@@ -1846,7 +1846,7 @@ bool idEntity::GetBool( const char* key )
 idEntity::GetOrigin
 ================
 */
-idVec3 idEntity::GetOrigin()
+idVec3 idEntity::GetOrigin() const
 {
 	return GetLocalCoordinates( GetPhysics()->GetOrigin() );
 }

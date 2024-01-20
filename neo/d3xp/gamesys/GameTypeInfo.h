@@ -7,8 +7,8 @@
 
 	This file has been generated with the Type Info Generator v1.1 (c) 2004 id Software
 
-	959 constants
-	92 enums
+	960 constants
+	93 enums
 	475 classes/structs/unions
 	3 templates
 	8 max inheritance level for 'iceMonsterZombieSawyer'
@@ -87,6 +87,7 @@ static constantInfo_t constantInfo[] = {
 	{ "int", "idVarDef::initializedVariable", "1" },
 	{ "int", "idVarDef::initializedConstant", "2" },
 	{ "int", "idVarDef::stackVariable", "3" },
+	{ "int", "statement_s::FLAG_OBJECTCALL_IMPL_NOT_PARSED_YET", "1" },
 	{ "const int", "ANIM_NumAnimChannels", "5" },
 	{ "const int", "ANIM_MaxAnimsPerChannel", "3" },
 	{ "const int", "ANIM_MaxSyncedAnims", "3" },
@@ -1050,6 +1051,11 @@ static enumValueInfo_t idVarDef_initialized_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
+static enumValueInfo_t statement_s_enum_3_typeInfo[] = {
+	{ "FLAG_OBJECTCALL_IMPL_NOT_PARSED_YET", 1 },
+	{ NULL, 0 }
+};
+
 static enumValueInfo_t jointModTransform_t_typeInfo[] = {
 	{ "JOINTMOD_NONE", 0 },
 	{ "JOINTMOD_LOCAL", 1 },
@@ -1115,7 +1121,7 @@ static enumValueInfo_t AFJointModType_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t enum_6_typeInfo[] = {
+static enumValueInfo_t enum_7_typeInfo[] = {
 	{ "PATHTYPE_WALK", 0 },
 	{ "PATHTYPE_WALKOFFLEDGE", 1 },
 	{ "PATHTYPE_BARRIERJUMP", 2 },
@@ -1219,7 +1225,7 @@ static enumValueInfo_t idMultiplayerGame_msg_evt_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t enum_14_typeInfo[] = {
+static enumValueInfo_t enum_15_typeInfo[] = {
 	{ "GAME_RELIABLE_MESSAGE_SYNCEDCVARS", 0 },
 	{ "GAME_RELIABLE_MESSAGE_SPAWN_PLAYER", 1 },
 	{ "GAME_RELIABLE_MESSAGE_CHAT", 2 },
@@ -1353,7 +1359,7 @@ static enumValueInfo_t constraintType_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t enum_26_typeInfo[] = {
+static enumValueInfo_t enum_27_typeInfo[] = {
 	{ "TH_ALL", -1 },
 	{ "TH_THINK", 1 },
 	{ "TH_PHYSICS", 2 },
@@ -1378,7 +1384,7 @@ static enumValueInfo_t signalNum_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idEntity_enum_28_typeInfo[] = {
+static enumValueInfo_t idEntity_enum_29_typeInfo[] = {
 	{ "EVENT_STARTSOUNDSHADER", 0 },
 	{ "EVENT_STOPSOUNDSHADER", 1 },
 	{ "EVENT_MAXEVENTS", 2 },
@@ -1392,19 +1398,19 @@ static enumValueInfo_t idEntity_interpolationBehavior_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idAnimatedEntity_enum_30_typeInfo[] = {
+static enumValueInfo_t idAnimatedEntity_enum_31_typeInfo[] = {
 	{ "EVENT_ADD_DAMAGE_EFFECT", 2 },
 	{ "EVENT_MAXEVENTS", 3 },
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idPlayerStart_enum_31_typeInfo[] = {
+static enumValueInfo_t idPlayerStart_enum_32_typeInfo[] = {
 	{ "EVENT_TELEPORTPLAYER", 2 },
 	{ "EVENT_MAXEVENTS", 3 },
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idProjectile_enum_32_typeInfo[] = {
+static enumValueInfo_t idProjectile_enum_33_typeInfo[] = {
 	{ "EVENT_DAMAGE_EFFECT", 2 },
 	{ "EVENT_MAXEVENTS", 3 },
 	{ NULL, 0 }
@@ -1419,7 +1425,7 @@ static enumValueInfo_t idProjectile_projectileState_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idWeapon_enum_34_typeInfo[] = {
+static enumValueInfo_t idWeapon_enum_35_typeInfo[] = {
 	{ "EVENT_RELOAD", 2 },
 	{ "EVENT_ENDRELOAD", 3 },
 	{ "EVENT_CHANGESKIN", 4 },
@@ -1427,13 +1433,13 @@ static enumValueInfo_t idWeapon_enum_34_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idLight_enum_35_typeInfo[] = {
+static enumValueInfo_t idLight_enum_36_typeInfo[] = {
 	{ "EVENT_BECOMEBROKEN", 2 },
 	{ "EVENT_MAXEVENTS", 3 },
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t EnvironmentProbe_enum_36_typeInfo[] = {
+static enumValueInfo_t EnvironmentProbe_enum_37_typeInfo[] = {
 	{ "EVENT_BECOMEBROKEN", 2 },
 	{ "EVENT_MAXEVENTS", 3 },
 	{ NULL, 0 }
@@ -1446,7 +1452,7 @@ static enumValueInfo_t itemGiveFlags_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idItem_enum_38_typeInfo[] = {
+static enumValueInfo_t idItem_enum_39_typeInfo[] = {
 	{ "EVENT_PICKUP", 2 },
 	{ "EVENT_RESPAWN", 3 },
 	{ "EVENT_RESPAWNFX", 4 },
@@ -1458,7 +1464,7 @@ static enumValueInfo_t idItem_enum_38_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t FxFader_enum_39_typeInfo[] = {
+static enumValueInfo_t FxFader_enum_40_typeInfo[] = {
 	{ "FX_STATE_OFF", 0 },
 	{ "FX_STATE_RAMPUP", 1 },
 	{ "FX_STATE_RAMPDOWN", 2 },
@@ -1563,7 +1569,7 @@ static enumValueInfo_t gameExpansionType_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t enum_43_typeInfo[] = {
+static enumValueInfo_t enum_44_typeInfo[] = {
 	{ "BERSERK", 0 },
 	{ "INVISIBILITY", 1 },
 	{ "MEGAHEALTH", 2 },
@@ -1576,7 +1582,7 @@ static enumValueInfo_t enum_43_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t enum_44_typeInfo[] = {
+static enumValueInfo_t enum_45_typeInfo[] = {
 	{ "SPEED", 0 },
 	{ "PROJECTILE_DAMAGE", 1 },
 	{ "MELEE_DAMAGE", 2 },
@@ -1584,7 +1590,7 @@ static enumValueInfo_t enum_44_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t enum_45_typeInfo[] = {
+static enumValueInfo_t enum_46_typeInfo[] = {
 	{ "INFLUENCE_NONE", 0 },
 	{ "INFLUENCE_LEVEL1", 1 },
 	{ "INFLUENCE_LEVEL2", 2 },
@@ -1592,7 +1598,7 @@ static enumValueInfo_t enum_45_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idPlayer_enum_46_typeInfo[] = {
+static enumValueInfo_t idPlayer_enum_47_typeInfo[] = {
 	{ "EVENT_IMPULSE", 2 },
 	{ "EVENT_EXIT_TELEPORTER", 3 },
 	{ "EVENT_ABORT_TELEPORTER", 4 },
@@ -1652,7 +1658,7 @@ static enumValueInfo_t moverState_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idExplodingBarrel_enum_52_typeInfo[] = {
+static enumValueInfo_t idExplodingBarrel_enum_53_typeInfo[] = {
 	{ "EVENT_EXPLODE", 2 },
 	{ "EVENT_MAXEVENTS", 3 },
 	{ NULL, 0 }
@@ -1666,7 +1672,7 @@ static enumValueInfo_t idExplodingBarrel_explode_state_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idSecurityCamera_enum_54_typeInfo[] = {
+static enumValueInfo_t idSecurityCamera_enum_55_typeInfo[] = {
 	{ "SCANNING", 0 },
 	{ "LOSINGINTEREST", 1 },
 	{ "ALERT", 2 },
@@ -1674,7 +1680,7 @@ static enumValueInfo_t idSecurityCamera_enum_54_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t idBrittleFracture_enum_55_typeInfo[] = {
+static enumValueInfo_t idBrittleFracture_enum_56_typeInfo[] = {
 	{ "EVENT_PROJECT_DECAL", 2 },
 	{ "EVENT_SHATTER", 3 },
 	{ "EVENT_MAXEVENTS", 4 },
@@ -2121,7 +2127,7 @@ static enumValueInfo_t menuSounds_t_typeInfo[] = {
 	{ NULL, 0 }
 };
 
-static enumValueInfo_t enum_91_typeInfo[] = {
+static enumValueInfo_t enum_92_typeInfo[] = {
 	{ "OP_RETURN", 0 },
 	{ "OP_UINC_F", 1 },
 	{ "OP_UINCP_F", 2 },
@@ -2253,10 +2259,11 @@ static enumTypeInfo_t enumTypeInfo[] = {
 	{ "stateResult_t", stateResult_t_typeInfo },
 	{ "etype_t", etype_t_typeInfo },
 	{ "idVarDef::initialized_t", idVarDef_initialized_t_typeInfo },
+	{ "statement_s::enum_3", statement_s_enum_3_typeInfo },
 	{ "jointModTransform_t", jointModTransform_t_typeInfo },
 	{ "frameCommandType_t", frameCommandType_t_typeInfo },
 	{ "AFJointModType_t", AFJointModType_t_typeInfo },
-	{ "enum_6", enum_6_typeInfo },
+	{ "enum_7", enum_7_typeInfo },
 	{ "pvsType_t", pvsType_t_typeInfo },
 	{ "gameType_t", gameType_t_typeInfo },
 	{ "flagStatus_t", flagStatus_t_typeInfo },
@@ -2264,7 +2271,7 @@ static enumTypeInfo_t enumTypeInfo[] = {
 	{ "snd_evt_t", snd_evt_t_typeInfo },
 	{ "idMultiplayerGame::gameState_t", idMultiplayerGame_gameState_t_typeInfo },
 	{ "idMultiplayerGame::msg_evt_t", idMultiplayerGame_msg_evt_t_typeInfo },
-	{ "enum_14", enum_14_typeInfo },
+	{ "enum_15", enum_15_typeInfo },
 	{ "gameState_t", gameState_t_typeInfo },
 	{ "idEventQueue::outOfOrderBehaviour_t", idEventQueue_outOfOrderBehaviour_t_typeInfo },
 	{ "slowmoState_t", slowmoState_t_typeInfo },
@@ -2276,36 +2283,36 @@ static enumTypeInfo_t enumTypeInfo[] = {
 	{ "pmtype_t", pmtype_t_typeInfo },
 	{ "waterLevel_t", waterLevel_t_typeInfo },
 	{ "constraintType_t", constraintType_t_typeInfo },
-	{ "enum_26", enum_26_typeInfo },
+	{ "enum_27", enum_27_typeInfo },
 	{ "signalNum_t", signalNum_t_typeInfo },
-	{ "idEntity::enum_28", idEntity_enum_28_typeInfo },
+	{ "idEntity::enum_29", idEntity_enum_29_typeInfo },
 	{ "idEntity::interpolationBehavior_t", idEntity_interpolationBehavior_t_typeInfo },
-	{ "idAnimatedEntity::enum_30", idAnimatedEntity_enum_30_typeInfo },
-	{ "idPlayerStart::enum_31", idPlayerStart_enum_31_typeInfo },
-	{ "idProjectile::enum_32", idProjectile_enum_32_typeInfo },
+	{ "idAnimatedEntity::enum_31", idAnimatedEntity_enum_31_typeInfo },
+	{ "idPlayerStart::enum_32", idPlayerStart_enum_32_typeInfo },
+	{ "idProjectile::enum_33", idProjectile_enum_33_typeInfo },
 	{ "idProjectile::projectileState_t", idProjectile_projectileState_t_typeInfo },
-	{ "idWeapon::enum_34", idWeapon_enum_34_typeInfo },
-	{ "idLight::enum_35", idLight_enum_35_typeInfo },
-	{ "EnvironmentProbe::enum_36", EnvironmentProbe_enum_36_typeInfo },
+	{ "idWeapon::enum_35", idWeapon_enum_35_typeInfo },
+	{ "idLight::enum_36", idLight_enum_36_typeInfo },
+	{ "EnvironmentProbe::enum_37", EnvironmentProbe_enum_37_typeInfo },
 	{ "itemGiveFlags_t", itemGiveFlags_t_typeInfo },
-	{ "idItem::enum_38", idItem_enum_38_typeInfo },
-	{ "FxFader::enum_39", FxFader_enum_39_typeInfo },
+	{ "idItem::enum_39", idItem_enum_39_typeInfo },
+	{ "FxFader::enum_40", FxFader_enum_40_typeInfo },
 	{ "playerIconType_t", playerIconType_t_typeInfo },
 	{ "achievement_t", achievement_t_typeInfo },
 	{ "gameExpansionType_t", gameExpansionType_t_typeInfo },
-	{ "enum_43", enum_43_typeInfo },
 	{ "enum_44", enum_44_typeInfo },
 	{ "enum_45", enum_45_typeInfo },
-	{ "idPlayer::enum_46", idPlayer_enum_46_typeInfo },
+	{ "enum_46", enum_46_typeInfo },
+	{ "idPlayer::enum_47", idPlayer_enum_47_typeInfo },
 	{ "idMover::moveStage_t", idMover_moveStage_t_typeInfo },
 	{ "idMover::moverCommand_t", idMover_moverCommand_t_typeInfo },
 	{ "idMover::moverDir_t", idMover_moverDir_t_typeInfo },
 	{ "idElevator::elevatorState_t", idElevator_elevatorState_t_typeInfo },
 	{ "moverState_t", moverState_t_typeInfo },
-	{ "idExplodingBarrel::enum_52", idExplodingBarrel_enum_52_typeInfo },
+	{ "idExplodingBarrel::enum_53", idExplodingBarrel_enum_53_typeInfo },
 	{ "idExplodingBarrel::explode_state_t", idExplodingBarrel_explode_state_t_typeInfo },
-	{ "idSecurityCamera::enum_54", idSecurityCamera_enum_54_typeInfo },
-	{ "idBrittleFracture::enum_55", idBrittleFracture_enum_55_typeInfo },
+	{ "idSecurityCamera::enum_55", idSecurityCamera_enum_55_typeInfo },
+	{ "idBrittleFracture::enum_56", idBrittleFracture_enum_56_typeInfo },
 	{ "moveType_t", moveType_t_typeInfo },
 	{ "moveCommand_t", moveCommand_t_typeInfo },
 	{ "talkState_t", talkState_t_typeInfo },
@@ -2341,7 +2348,7 @@ static enumTypeInfo_t enumTypeInfo[] = {
 	{ "pdaHandlerWidgets_t", pdaHandlerWidgets_t_typeInfo },
 	{ "scoreboardHandlerWidgets_t", scoreboardHandlerWidgets_t_typeInfo },
 	{ "menuSounds_t", menuSounds_t_typeInfo },
-	{ "enum_91", enum_91_typeInfo },
+	{ "enum_92", enum_92_typeInfo },
 	{ NULL, NULL }
 };
 
@@ -2546,11 +2553,12 @@ static classVariableInfo_t idVarDefName_typeInfo[] = {
 
 static classVariableInfo_t statement_t_typeInfo[] = {
 	{ "unsigned short", "op", (intptr_t)(&((statement_t *)0)->op), sizeof( ((statement_t *)0)->op ) },
+	{ "unsigned short", "flags", (intptr_t)(&((statement_t *)0)->flags), sizeof( ((statement_t *)0)->flags ) },
+	{ "unsigned short", "linenumber", (intptr_t)(&((statement_t *)0)->linenumber), sizeof( ((statement_t *)0)->linenumber ) },
+	{ "unsigned short", "file", (intptr_t)(&((statement_t *)0)->file), sizeof( ((statement_t *)0)->file ) },
 	{ "idVarDef *", "a", (intptr_t)(&((statement_t *)0)->a), sizeof( ((statement_t *)0)->a ) },
 	{ "idVarDef *", "b", (intptr_t)(&((statement_t *)0)->b), sizeof( ((statement_t *)0)->b ) },
 	{ "idVarDef *", "c", (intptr_t)(&((statement_t *)0)->c), sizeof( ((statement_t *)0)->c ) },
-	{ "unsigned short", "linenumber", (intptr_t)(&((statement_t *)0)->linenumber), sizeof( ((statement_t *)0)->linenumber ) },
-	{ "unsigned short", "file", (intptr_t)(&((statement_t *)0)->file), sizeof( ((statement_t *)0)->file ) },
 	{ NULL, 0 }
 };
 
@@ -2559,8 +2567,8 @@ static classVariableInfo_t idProgram_typeInfo[] = {
 	{ "idStr", "filename", (intptr_t)(&((idProgram *)0)->filename), sizeof( ((idProgram *)0)->filename ) },
 	{ "int", "filenum", (intptr_t)(&((idProgram *)0)->filenum), sizeof( ((idProgram *)0)->filenum ) },
 	{ "int", "numVariables", (intptr_t)(&((idProgram *)0)->numVariables), sizeof( ((idProgram *)0)->numVariables ) },
-	{ "byte[296608]", "variables", (intptr_t)(&((idProgram *)0)->variables), sizeof( ((idProgram *)0)->variables ) },
-	{ "idStaticList < byte , 296608 >", "variableDefaults", (intptr_t)(&((idProgram *)0)->variableDefaults), sizeof( ((idProgram *)0)->variableDefaults ) },
+	{ "byte[593216]", "variables", (intptr_t)(&((idProgram *)0)->variables), sizeof( ((idProgram *)0)->variables ) },
+	{ "idStaticList < byte , 296608 * 2 >", "variableDefaults", (intptr_t)(&((idProgram *)0)->variableDefaults), sizeof( ((idProgram *)0)->variableDefaults ) },
 	{ "idStaticList < function_t , 3584 >", "functions", (intptr_t)(&((idProgram *)0)->functions), sizeof( ((idProgram *)0)->functions ) },
 	{ "idStaticList < statement_t , 131072 >", "statements", (intptr_t)(&((idProgram *)0)->statements), sizeof( ((idProgram *)0)->statements ) },
 	{ "idList < idTypeDef * , TAG_SCRIPT >", "types", (intptr_t)(&((idProgram *)0)->types), sizeof( ((idProgram *)0)->types ) },
@@ -7089,7 +7097,6 @@ static classVariableInfo_t idMenuScreen_Shell_SystemOptions_idMenuDataSource_Sys
 	{ "int", "originalVsync", (intptr_t)(&((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalVsync), sizeof( ((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalVsync ) },
 	{ "float", "originalBrightness", (intptr_t)(&((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalBrightness), sizeof( ((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalBrightness ) },
 	{ "float", "originalVolume", (intptr_t)(&((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalVolume), sizeof( ((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalVolume ) },
-	{ "int", "originalShadowMapping", (intptr_t)(&((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalShadowMapping), sizeof( ((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalShadowMapping ) },
 	{ "int", "originalSSAO", (intptr_t)(&((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalSSAO), sizeof( ((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalSSAO ) },
 	{ "int", "originalPostProcessing", (intptr_t)(&((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalPostProcessing), sizeof( ((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalPostProcessing ) },
 	{ "float", "originalAmbientBrightness", (intptr_t)(&((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalAmbientBrightness), sizeof( ((idMenuScreen_Shell_SystemOptions::idMenuDataSource_SystemSettings *)0)->originalAmbientBrightness ) },
