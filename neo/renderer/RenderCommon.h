@@ -1301,10 +1301,14 @@ enum RenderMode
 	RENDERMODE_DOOM,
 	RENDERMODE_C64,
 	RENDERMODE_C64_HIGHRES,
+	RENDERMODE_CPC,
+	RENDERMODE_CPC_HIGHRES,
 	RENDERMODE_GENESIS,
 	RENDERMODE_GENESIS_HIGHRES,
 	RENDERMODE_PSX,
 };
+
+extern idCVar r_retroDitherScale;
 
 extern idCVar r_renderMode;
 extern idCVar image_pixelLook;
